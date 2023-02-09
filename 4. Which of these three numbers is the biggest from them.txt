@@ -1,0 +1,17 @@
+x = 59
+y = 21
+z = 58
+
+if (x>y and x>z):
+    print (x)
+    print ('is the biggest number of these three')
+
+elif (y>x and y>z):
+    print (y)
+    print ("is the biggest number of these three")
+
+elif (z>x and z>y):
+    print (z)
+    print ('is the biggest number of these three')
+
+print ('goodbye')

@@ -1,0 +1,65 @@
+from numpy import *
+
+arr1= array ([
+                [1, 2],
+                [3, 4]
+            ])
+
+arr2= array ([
+                [5, 6],
+                [7, 8]
+            ])
+
+print (arr1)
+print (arr2 [0, [0]])
+
+arr3 = array ([
+                [],
+                []
+             ])
+
+print (arr3)
+
+i = 0
+j = 0
+p = 0
+u = 0
+k = 0
+h = 0
+s = 0
+z = 0
+q = 1
+
+for x in range (0, 2):
+
+    if x == 0:
+
+        for a in arr1 [k]:
+
+            l = a * arr2 [j, [p]]
+            print (l)
+            j+=1
+
+    if x == 0:
+
+        h = 1
+        for a in arr1 [k]:
+            l = a * arr2 [s, [h]]
+            print (l)
+            s+=1
+
+    if x == 1:
+        q = 1
+        for a in arr1 [q]:
+            l = a * arr2 [u, [z]]
+            print (l)
+            u+=1
+
+    if x == 1:
+        t = 1
+        for a in arr1 [q]:
+            l = a * arr2 [z, [t]]
+            print (l)
+            z+=1
+
+print ('Goodbye')

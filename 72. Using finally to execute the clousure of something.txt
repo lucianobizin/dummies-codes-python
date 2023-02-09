@@ -1,0 +1,13 @@
+a = 5
+b = 0
+
+try:
+    print ("Resource open")
+    print (a/b)
+
+
+except Exception as e:
+    print ("Hey, you cannot divided a number by zero", e)
+
+finally:
+    print( "Resource closed" )

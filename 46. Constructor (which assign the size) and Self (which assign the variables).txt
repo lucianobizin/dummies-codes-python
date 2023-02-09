@@ -1,0 +1,18 @@
+class computer ():
+
+    def __init__(self):
+        self.name = "Luciano"
+        self.age = "age"
+
+
+c1 = computer ()
+c2 = computer ()
+
+c1.name = "Micaela"
+c1.age = 32
+
+c2.name = "Luciano"
+c2.age = 31
+
+print (c1.name, c1.age)
+print (c2.name, c2.age)

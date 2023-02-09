@@ -1,0 +1,14 @@
+Python is both a compile and interpreter language
+
+
+COMPILE
+
+Writing a code in python --------- python compile my code and turn it into high level language -------- binary language is the computer language.
+
+
+Source code ---- compiler ---- byte code (any machine will read it despite its own architecture) ---- interpreter (python virtual machine) ---- machine language
+
+INTERPRETER
+
+Read instructions 1, 2, 3, lines etc.
+ 

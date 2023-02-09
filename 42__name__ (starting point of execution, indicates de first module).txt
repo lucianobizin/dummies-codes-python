@@ -1,0 +1,23 @@
+
+PRUEBA 1
+
+def main ():
+
+    print ("Demo says")
+    print ("Welcome User")
+
+if __name__ == "__main__":
+    main ()
+
+PRINT : Demo says / Welcome User
+
+
+
+
+LOGIC 
+
+import Prueba1
+
+print ("Hello")
+
+PRINT: Hello

@@ -1,0 +1,16 @@
+a = [12, 155, 28, 36987, 15]
+
+for x in a:
+    if x % 5 ==0:
+        print (x)
+
+	break                 (with the break, the program only give us the first number divisible by 5]
+
+a = [12, 155, 28, 36987, 15] [if there is no any number divisible by 5, break is necessary]
+
+for x in a:
+    if x % 5 ==0:
+        print (x)
+        break
+else:
+print ('not found')

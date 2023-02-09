@@ -1,0 +1,7 @@
+def square (n):
+
+    result = n * n
+    return result
+
+result = square (5)
+print (result)

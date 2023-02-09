@@ -1,0 +1,39 @@
+Thread
+
+What is a thread? = imagine you are playing a car game, and you are driving...
+
+		you are 1 thread
+		the opponents are 1 thread
+		the environment passing is a 1 thread
+
+
+ALWAYS THERE IS A MAIN THREAD...AND IF YOU CREATE TWO THREADS, THERE WILL BE 3 THREADS.
+
+from time import sleep
+from threading import *
+
+class Hello (Thread):
+
+    def run (self):
+        for i in range (5):
+            print ("Hello")
+            sleep(0.2)
+
+
+class Hi (Thread):
+
+    def run(self):
+        for i in range(5):
+            print("Hi")
+            sleep(0.2)
+
+he = Hello ()
+hi = Hi ()
+
+he.start ()
+sleep(0.1)
+hi.start ()
+
+he.join()
+hi.join()
+print ("Bye")

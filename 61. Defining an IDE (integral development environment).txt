@@ -1,0 +1,15 @@
+class PyCharm ():
+
+    def execute (self):
+        print ("Compiling")
+        print ("Running")
+
+class laptop ():
+
+    def code (self, ide):
+        ide.execute ()
+
+ide = PyCharm ()
+
+lap1 = laptop ()
+lap1.code(ide)

@@ -1,0 +1,14 @@
+def greet ():
+    print ('Hello')
+    print ('Good morning')
+
+def jeringa (x, y):
+    c = x + y
+    d = x - y
+    e = x * y
+    f = x / y
+    return c,d,e,f
+
+greet ()
+result1, result2, result3, result4 = jeringa (8,9)
+print (result1, result2, result3, result4)

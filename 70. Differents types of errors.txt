@@ -1,0 +1,27 @@
+ERRORS:
+
+COMPILE (time) ERRORS
+
+	Syntactical error:
+		missing (:)
+		wrong spelling
+
+
+
+
+
+
+LOGICAL ERRORS
+
+	The logical error are tried to be correct in order to not have bugs.
+	Wrong output:
+		2+3=4
+
+
+
+
+RUN TIME ERROR
+
+	A number divided by zero
+	The error is at the run time (when you run the code)
+	The error is done by the user

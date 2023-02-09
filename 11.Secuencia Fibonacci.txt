@@ -1,0 +1,102 @@
+a = b = 1
+while a <= 10000:
+    print (a)
+    (a,b) = (b, a+b)
+
+
+a = b = 1
+
+for i in range (40):
+
+    while i <= 40:
+        print (a)
+        (a,b) = (b, a+b)
+        break
+
+    i+=1
+
+
+
+def fib (n):
+
+    a = 0
+    b = 1
+
+    print (a)
+    print (b)
+
+    for i in range (2, n):
+
+        if n==1:
+            print (a)
+
+        else:
+            c = a + b
+            a = b
+            b = c
+            print (c)
+
+fib (50)
+
+
+
+def fib (n):
+
+    if n>=1:
+
+        a = 0
+        b = 1
+
+        print (a)
+        print (b)
+
+        for i in range (2, n):
+
+            if n==1:
+                print (a)
+
+            else:
+                c = a + b
+                a = b
+                b = c
+
+                if c<=n:
+                    print (c)
+
+    else:
+        print ('No correct input')
+
+fib (50)
+
+
+def fib (n):
+
+    if n>=1:
+
+        a = 0
+        b = 1
+
+        for i in range (2, n):
+
+            if n==1:
+                print (a)
+
+            else:
+                c = a + b
+                a = b
+                b = c
+
+                if c>n-b and c<=n:
+                    print (c)
+
+    else:
+        print ('No correct input')
+
+fib (100000)
+
+
+
+
+112358
+
+2+3=5

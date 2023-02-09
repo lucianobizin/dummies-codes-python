@@ -1,0 +1,97 @@
+from pandas import *
+from numpy import *
+from pandas_datareader import data
+import matplotlib.pyplot as plt
+
+start_date = "2014-01-01"
+end_date = "2020-02-22"
+SRC_DATA_FILENAME = "C:\\Users\lucia\PycharmProjects\My Project 1\SRC_DATA_FILENAME.pkl"
+
+try:
+    google_data = read_pickle ("C:\\Users\lucia\PycharmProjects\My Project 1\SRC_DATA_FILENAME")
+    print( "File data found...reading GOOG data" )
+except FileNotFoundError:
+    print( "File not found...downloading the GOOG data" )
+    google_data = data.DataReader( "GOOG", "yahoo", start_date, end_date )
+    google_data.to_pickle( SRC_DATA_FILENAME )
+
+google_data_signal = DataFrame (index=google_data.index)
+google_data_signal ["price"] = google_data ["Adj Close"]
+
+def trading_support_resistance(data, bin_width=20):
+    data["sup_tolerance"] = Series( zeros( len( data ) ) )
+    data["res_tolerance"] = Series( zeros( len( data ) ) )
+    data["sup_count"] = Series( zeros( len( data ) ) )
+    data["res_count"] = Series( zeros( len( data ) ) )
+    data["sup"] = Series( zeros( len( data ) ) )
+    data["res"] = Series( zeros( len( data ) ) )
+    data["positions"] = Series( zeros( len( data ) ) )
+    data["signal"] = Series( zeros( len( data ) ) )
+    in_support = 0
+    in_resistance = 0
+
+    for x in range ( (bin_width - 1) + bin_width, len( data ) ):
+        data_section = data[x - bin_width:x + 1]
+        support_level = min( data_section["price"] )
+        resistance_level = max( data_section["price"] )
+        range_level = resistance_level - support_level
+        data["res"][x] = resistance_level
+        data["sup"][x] = support_level
+        data["sup_tolerance"][x] = support_level + 0.2 * range_level
+        data["res_tolerance"][x] = resistance_level - 0.2 * range_level
+
+        if data["price"][x] >= data["res_tolerance"][x] and\
+                                    data["price"] [x] <= data["res"][x]:
+            in_resistance += 1
+            data["res_count"][x] = in_resistance
+        elif data ["price"] [x] <= data ["sup_tolerance"] [x] and\
+                                    data ["price"] [x] >= data ["sup"] [x]:
+            in_support += 1
+            data["sup_count"] [x] = in_support
+        else:
+            in_support = 0
+            in_resistance = 0
+
+        if in_resistance > 2:
+            data["signal"][x] = 1
+        elif in_support > 2:
+            data["signal"][x] = 0
+        else:
+            data["signal"][x] = data["signal"][x-1]
+
+    data["positions"] = data["signal"].diff()
+
+trading_support_resistance(google_data_signal)
+
+fig = plt.figure()
+ax1 = fig.add_subplot( 111, ylabel="Google price in $" )
+google_data_signal["sup"].plot( ax=ax1, color="g", lw=2. )
+google_data_signal["res"].plot( ax=ax1, color="b", lw=2. )
+google_data_signal["price"].plot( ax=ax1, color="r", lw=2. )
+google_data_signal ["sup_tolerance"].plot (ax=ax1, color="m", lw=2.)
+google_data_signal ["res_tolerance"].plot (ax=ax1, color="k", lw=2.)
+ax1.plot( google_data_signal.loc[google_data_signal.positions == 1.0].index, google_data_signal.price[google_data_signal.positions == 1.0], "^", markersize=7, color="k", label="buy" )
+ax1.plot( google_data_signal.loc[google_data_signal.positions == -1.0].index,google_data_signal.price[google_data_signal.positions == -1.0], "v", markersize=7, color="k", label="sell" )
+plt.legend()
+plt.show()
+
+initial_capital = float (1000.)
+positions = DataFrame (index=google_data_signal.index)
+portfolio = DataFrame (index=google_data_signal.index)
+positions ["GOOG"] = google_data_signal ["signal"].fillna (0.0)
+portfolio ["positions"] = (positions.multiply(google_data_signal["price"], axis=0)). fillna (0.0)
+portfolio ["cash"] = initial_capital - (positions.diff().multiply(google_data_signal ["price"], axis=0)).cumsum()
+portfolio ["total"] = portfolio ["positions"] + portfolio ["cash"]
+
+figure_1 = plt.figure ()
+ax1 = figure_1.add_subplot (111, ylabel="Total")
+google_data_signal ["price"].plot (ax=ax1, color="g", lw=4.)
+portfolio ["positions"].plot (ax=ax1, color="b", lw=4.)
+portfolio ["cash"].plot (ax=ax1, color="r", lw=4.)
+portfolio ["total"].plot (ax=ax1, color="y", lw=4.)
+set_option ("display.max_rows", 3000)
+set_option ("display.max_columns", 1000)
+set_option ("display.width", 1000)
+print (portfolio ["total"])
+plt.legend()
+plt.show()

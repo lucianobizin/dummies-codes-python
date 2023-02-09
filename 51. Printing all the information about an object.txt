@@ -1,0 +1,15 @@
+class student:
+
+    def __init__(self, name, dni):
+        self.name = name
+        self.dni = dni
+
+    def show (self):
+        print (self.name, self.dni)
+
+
+s1 = student ("Luciano", 34178467)
+s2 = student ("Micaela", 33112279)
+
+s1.show ()
+s2.show ()

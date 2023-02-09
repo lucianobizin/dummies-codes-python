@@ -1,0 +1,156 @@
+PRUEBA 1:
+
+from Logic import add
+
+def fun1():
+    add()
+    print ("from fun1")
+
+def fun2():
+    print ("from fun2")
+
+def main():
+    fun1()
+    fun2()
+
+main ()
+
+
+FROM LOGIC:
+
+def add():
+    print ("result 1 is")
+
+def sub():
+    print ("result 2 is")
+
+def main():
+    add()
+    sub()
+
+main()
+
+PRINT: 
+
+result 1 is
+result 2 is
+
+-------------------------------------
+I RETURNED TO PRUEBA1, I PRINT, AND I GET:
+
+PRINT PRUEBA1: 
+result 1 is (no lo quisiera)
+result 2 is (no lo quisiera)
+result 1 is
+from fun1
+from fun2
+
+It happens because in Prueba1 we are executing a module imported (Logic), not the fuction.
+-------------------------------------
+
+SO AS NOT TO PRINT in Prueba1: "result 1" is, and "result 2" is, unless only the third "result 1", coming from add():
+
+Prueba1:
+
+from Logic import add
+
+def fun1():
+    add()
+    print ("from fun1")
+
+def fun2():
+    print ("from fun2")
+
+def main():
+    fun1()
+    fun2()
+
+main ()
+
+
+Logic:
+
+def add():
+    print ("result 1 is")
+
+def sub():
+    print ("result 2 is")
+
+def main():
+    add()
+    sub()
+
+if __name__ == "__main__":
+    main () 
+
+-------------------------------
+PRINT OF PRUEBA1:
+result 1 is
+from fun1
+from fun2
+
+PRINT OF LOGIC:
+result 1 is
+result 2 is
+-------------------------------
+
+If a write:
+
+Prueba1:
+
+from Logic import add
+
+def fun1():
+    add()
+    print ("from fun1")
+
+def fun2():
+    print ("from fun2")
+
+def main():
+    fun1()
+    fun2()
+
+main ()
+
+
+Logic:
+
+def add():
+    print ("result 1 is", __name__)
+
+def sub():
+    print ("result 2 is")
+
+def main():
+    print ("In logic main")
+    add()
+    sub()
+
+if __name__ == "__main__":
+    main () 
+
+-------------------------------
+PRINT OF PRUEBA1:
+result 1 is Logic
+from fun1
+from fun2
+
+PRINT OF LOGIC:
+In Logic main
+result 1 is __main__
+result 2 is
+
+What has happened is that name of "result 1 is", which is the imprint of the module add(), and which module names is Logic, appears in PRUEBA1 PRINT, as "Logic". Add function as a module
+-------------------------------
+
+
+Adding the if __name__ == "__main__", at the time of printing Prueba1, it does not appear the "In Logic main", "result 1 is", "result 2 is" repeated, unless only the print of add (), which is "result 1 is"...
+
+
+Adding, __name__ in Logic, to "result 1 is", we have at the moment of printing Prueba1, what we wanted to print, as to know, "result 1 is", "from func1" and "from func2", but notice, that by the side of "result 1 is" (coming from add() from Logic), appears the name of the module from which comes from.
+
+-------------------------------
+
+Writing if __name__ == "__main__" stop printing Logic everytime I tried to print Prueba1.
+Writing __name__ by the side of "result 1 is" (in Logic), everytime I tried to print Prueba!, the name Logic (module) appears by the side of "result 1 is" (coming from add() in Prueba1).

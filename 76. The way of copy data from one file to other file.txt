@@ -1,0 +1,23 @@
+WE CAN READ DATA "r"
+WE CAN COPY AND WRITE DATA IN OTHER FILE WITH A FORLOOP AND "w"
+WE CAN COPY AND APPEND DATA IN OTHER FILE WITH A FORLOOP AND "a"
+
+
+
+f = open("Data of python.py", "r")
+
+f1 = open ("abc", "w")
+
+for data in f:
+    f1.write(data)
+
+
+
+
+
+f = open("C:\\Users\lucia\Desktop\Luciano.jpg", "rb") ----- I AM COPYNG A PICTURE FILE INTO OTHER FILE IN PYTHON.
+
+f1 = open ("MyPic.JPG", "wb")
+
+for i in f:
+    f1.write (i)

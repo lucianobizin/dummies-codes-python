@@ -1,0 +1,22 @@
+from array import *
+
+arr = array ('i', [])
+
+n = int (input('How many numbers do you want to add to your array?'))
+
+for i in range (n):
+    x = int (input('What is the number would you like to add?'))
+    arr.append (x)
+
+print (arr)
+
+val = int(input('Enter the value you want to know how is indexed'))
+
+l = 0
+for e in arr:
+    if e==val:
+        print(l)
+        break
+    l+=1
+
+print (arr.index(val))

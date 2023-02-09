@@ -1,0 +1,29 @@
+a = 5
+b = 0
+
+try:   ---------------Critical block
+
+    print (a/b)
+
+except Exception:
+    print ("Hey, you cannot divided a number by zero")
+       ------------------
+
+print ("Bye")
+
+
+
+
+
+
+a = 5
+b = 0
+
+try:
+
+    print (a/b)
+
+except Exception as e:
+    print ("Hey, you cannot divided a number by zero", e)
+
+print ("Bye")

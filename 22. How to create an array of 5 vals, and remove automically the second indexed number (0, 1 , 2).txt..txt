@@ -1,0 +1,15 @@
+from array import *
+
+arr = array ('i', [])
+
+for i in range (5):
+    x = int (input('What is the number would you like to add?'))
+    arr.append (x)
+
+print (arr)
+
+for e in arr:
+    if e==(arr[2]):
+        arr.remove(e)
+        print (arr)
+        break

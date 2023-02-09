@@ -1,0 +1,46 @@
+from pandas import *
+from numpy import *
+from pandas_datareader import data
+import matplotlib.pyplot as plt
+
+#The format and the source of the Data Frame google_data
+start_date = "2020-02-10"
+end_date =  "2020-02-19"
+google_data = data.DataReader ("GOOG", "yahoo", start_date, end_date)
+pandas.set_option ("display.max_rows", 1000)
+pandas.set_option ("display.max_columns", 1000)
+pandas.set_option ("display.width", 1000)
+
+# The creation of the google_data_signal and its values.
+google_data_signal = pandas.DataFrame(index=google_data.index)
+google_data_signal ["price"] = google_data ["Adj Close"]
+google_data_signal ["daily_difference"] = google_data_signal ["price"].diff()
+google_data_signal ["signal"] = 0.0
+google_data_signal ["signal"] = where(google_data_signal["daily_difference"] > 0, 1.0, 0.0)
+google_data_signal ["positions"] = google_data_signal ["signal"].diff ()
+print (google_data_signal)
+
+#first plot
+figure = plt.figure ()
+ax1 = figure.add_subplot (111, ylabel="Google price in $")
+google_data_signal ["price"].plot (ax=ax1, color="r", lw=2.)
+ax1.plot(google_data_signal.loc[google_data_signal.positions == 1.0].index, google_data_signal.price [google_data_signal.positions == 1.0], "^", markersize = 5, color="m")
+ax1.plot(google_data_signal.loc[google_data_signal.positions == -1.0].index, google_data_signal.price [google_data_signal.positions == -1.0], "v", markersize = 5, color="k")
+
+#Second plot
+initial_capital = float (3000)
+positions = pandas.DataFrame(index=google_data_signal.index).fillna(0.0)
+portfolio = pandas.DataFrame(index=google_data_signal.index).fillna(0.0)
+positions ["GOOG"] = google_data_signal ["signal"]
+portfolio ["positions"] = (positions.multiply (google_data_signal["price"], axis=0))
+portfolio ["cash"] = initial_capital - (positions.diff().multiply(google_data_signal ["price"], axis=0)).cumsum()
+portfolio ["total"] = portfolio ["positions"] + portfolio ["cash"]
+
+figure_1 = plt.figure ()
+ax1 = figure_1.add_subplot (111, ylabel="Total")
+google_data_signal ["price"].plot (ax=ax1, color="g", lw=4.)
+portfolio ["positions"].plot (ax=ax1, color="b", lw=4.)
+portfolio ["cash"].plot (ax=ax1, color="r", lw=4.)
+portfolio ["total"].plot (ax=ax1, color="y", lw=4.)
+
+plt.show ()

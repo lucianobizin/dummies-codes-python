@@ -1,0 +1,11 @@
+x = 3
+r = x % 2
+
+if r==0:
+    print ('good')
+
+else:
+    print ('wrong')
+
+print ('bye')
+

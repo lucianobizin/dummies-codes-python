@@ -1,0 +1,6 @@
+from array import *
+
+vals = array ('i', [5, 9, 81, 4, 2])
+vals = sorted (vals)
+
+print (vals)

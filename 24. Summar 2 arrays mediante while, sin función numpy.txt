@@ -1,0 +1,14 @@
+from array import *
+
+arr1 = array ('i',[1, 2, 3, 4, 5])
+arr2 = array ('i',[6, 7, 8, 9, 10])
+arr3 = array ('i',[])
+
+a = 0
+b = 0
+
+while a < 5 and b <5:
+    if a==b:
+       arr3.append (arr1[a]+arr2[b])
+       print (arr3)
+    (a,b) = (a+1,b+1)

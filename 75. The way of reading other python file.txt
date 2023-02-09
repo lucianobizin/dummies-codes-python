@@ -1,0 +1,17 @@
+f = open("Data of python.py", "r")
+
+print (f.readline())
+print (f.readline())
+
+
+
+
+
+
+
+f = open("Data of python.py", "r")
+
+print (f.readline(), end="")
+print (f.readline())
+
+WITHOUT ANY LINE BETWEEN THE PRINT 1 AND THE PRINT 2

@@ -1,0 +1,13 @@
+def sort(nums):
+
+    for i in range (len(nums)-1, 0, -1):      # (len(nums)-1 => print (len(nums) = 7, but there are 6 number relations (12-56, 56-87, 87-45, etc).
+        for j in range (i):                   # j in range (i) => for the same reason.
+            if nums [j] > nums [j+1]:
+                temp = nums [j]
+                nums [j] = nums [j+1]
+                nums [j+1] = temp
+
+
+nums = [12, 56, 87, 45, 1, 36, 96]
+sort (nums)
+print (nums)

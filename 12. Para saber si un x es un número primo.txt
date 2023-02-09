@@ -1,0 +1,43 @@
+x = int (input('¿Es un número primo?'))
+
+for y in range (2,x):
+
+    if x%y==0:
+        print ("No")
+        break
+
+else:
+    print ("Yes")
+
+
+
+
+num = 7
+for i in range (2,num):
+    if num % i==0:
+       print ('Not prime')
+       break
+
+
+else:
+    print ('Prime')  
+
+
+
+import math
+import time
+
+
+t0 = time.time()
+c = 0  # for counting
+for n in range(1,100000):
+    max_div = math.floor(math.sqrt(n))
+    for i in range(2, 1 + max_div):
+      if n % i == 0:
+       print(n, ', Not prime')
+       break
+    else:
+       print(n, ', Prime')
+
+t1 = time.time()
+print("Time required :", t1 - t0)

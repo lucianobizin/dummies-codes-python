@@ -1,0 +1,70 @@
+APQR
+ABQR
+ABCR
+ABCD
+
+x,y='ABCD', 'PQR'
+for i in range (4):
+    print (x[:i+1]+y[i:])
+
+
+
+
+for i in range (0,4):
+  if i ==0:
+    for j in range (4):
+        if j==0:
+          print ('A ', end='')
+        if j==1:
+          print ('P ', end='')
+        if j==2:
+          print ('Q ', end='')
+        if j==3:
+          print ('R ', end='')
+    print ()
+
+
+  if i==1:
+      for j in range(4):
+          if j == 0:
+              print('A ', end='')
+          if j == 1:
+              print('B ', end='')
+          if j == 2:
+              print('Q ', end='')
+          if j == 3:
+              print('R ', end='')
+      print ()
+
+  if i==2:
+
+      for j in range(4):
+          if j == 0:
+              print('A ', end='')
+          if j == 1:
+              print('B ', end='')
+          if j == 2:
+              print('C ', end='')
+          if j == 3:
+              print('R ', end='')
+      print ()
+
+  if i==3:
+
+      for j in range(4):
+          if j == 0:
+              print('A ', end='')
+          if j == 1:
+              print('B ', end='')
+          if j == 2:
+              print('C ', end='')
+          if j == 3:
+              print('D ', end='')
+
+
+      print ()
+
+
+
+
+

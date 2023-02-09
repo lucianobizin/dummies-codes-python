@@ -1,0 +1,3 @@
+x = int (input("Enter the number you want and have its cubic number"))
+z = int (input(x**3))
+print (z)

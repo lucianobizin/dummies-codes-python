@@ -1,0 +1,22 @@
+DEFINIG A FUCTION:
+
+def is_even (n):
+    if n%2==0:
+        return n
+
+nums = [12, 59, 87, 1555, 20, 3, 67, 98]
+
+even numbers = list (filter(is_even, nums))
+
+print (even numbers)
+
+
+
+
+USING LAMBDA DIRECTLY:
+
+nums = [12, 59, 87, 1555, 20, 3, 67, 98]
+
+evens = list (filter(lambda n: n%2==0, nums))
+
+print (evens)

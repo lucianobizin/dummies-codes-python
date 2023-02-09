@@ -1,0 +1,6 @@
+from array import *
+arr = array ('i', [12, 4 , 89, 67, 98587])
+k = len (arr)-1
+while k>-1:
+    print (arr[k], end=' ')
+    k-=1

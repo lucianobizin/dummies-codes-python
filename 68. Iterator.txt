@@ -1,0 +1,35 @@
+nums = [7, 8, 9, 57]
+
+it = iter(nums)
+
+print (it.__next__())
+print (it.__next__())
+print (it.__next__())
+
+print (next(it))
+
+----------------------------
+IF WE WANT TO CREATE OUR OWN ITERATOR WE HAVE TO DEFINE THE OBJECT (DEF__ITER...) AND WE HAVE TO DEFINE THE VALUES (DEF__NEXT...)
+
+class Topten:
+
+    def __init__(self):
+        self.num=1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+
+        if self.num <=10:
+            val = self.num
+            self.num +=1
+
+            return val
+        else:
+            raise StopIteration
+
+nums = Topten ()
+
+for i in nums:
+    print (i)

@@ -1,0 +1,6 @@
+x = int (input('Si f(x)=x*x+3... ¿Cuánto valen todos los f(x) anteriores a x?'))
+
+for x in range(0, x):
+
+      y = (x * x + 3)
+      print ('f','(',x,')', '=', y)

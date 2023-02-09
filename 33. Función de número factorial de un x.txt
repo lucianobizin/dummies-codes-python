@@ -1,0 +1,30 @@
+Without recurssion:
+
+def fact (x):
+
+    f = 1
+
+    for i in range (1, x+1):
+
+        f = f * i
+
+    return f
+
+result = fact (1000)
+
+print ('The result is: ', result)
+
+
+
+
+With recurssion:
+
+def fact (n):
+
+    if n==0:
+        return 1
+
+    return n * fact (n-1)
+
+result = fact (10)
+print (result)

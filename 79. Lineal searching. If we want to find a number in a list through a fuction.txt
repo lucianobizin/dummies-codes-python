@@ -1,0 +1,41 @@
+pos = -1
+
+def search (list, n):
+
+    i = 0
+    while i < len(list):
+        if list[i] == n:
+            globals()["pos"] = i
+            return True
+        i+=1
+    else:
+        return False
+
+list = [12, 98, 56, 74, 2365]
+n = 2365
+
+if search (list, n):
+    print ("Found at", pos+1)
+else:
+    print ("Not found")
+
+-------------------------------
+
+pos = -1
+
+def search (list, n):
+    
+    for i in range (len(list)):
+        if list[i] == n:
+            globals()["pos"] = i
+            return True
+    else:
+        return False
+
+list = [12, 98, 56, 74, 2365]
+n = 2365
+
+if search (list, n):
+    print ("Found at", pos+1)
+else:
+    print ("Not found")

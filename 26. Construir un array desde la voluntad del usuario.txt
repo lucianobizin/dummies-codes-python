@@ -1,0 +1,13 @@
+from array import *
+
+x = int (input ('¿Cuántos números querés que posea tu array?'))
+arr = array ('i', [])
+
+i = 0
+for i in range (x):
+    y = int (input ('¿Qué números querés agregar a tu array?'))
+    arr.append (y)
+    i+=1
+
+
+print (arr)

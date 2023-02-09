@@ -1,0 +1,27 @@
+IF SOMETHING BEHAVE AS A DUCK IT IS PROBABLY A DUCK
+IF SOMETHING BEHAVE AS IDE (OBJECT) IT IS PROBABLY IDE
+IT DOES NOT MATTER WHAT CLASS IDE IS, UNLESS THAT IDE BEHAVE AS THE OBJECT IDE
+
+class PyCharm ():
+
+    def execute (self):
+        print ("Compiling")
+        print ("Running")
+
+class MyEditor ():
+
+    def execute (self):
+        print ("Spell Check")
+        print ("Convention Check")
+        print( "Compiling" )
+        print( "Running" )
+
+class laptop ():
+
+    def code (self, ide):
+        ide.execute ()
+
+ide = MyEditor ()
+
+lap1 = laptop ()
+lap1.code(ide)
